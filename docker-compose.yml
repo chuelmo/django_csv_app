@@ -1,0 +1,33 @@
+version: "3.1"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: taho
+    ports:
+      - 5432:5432
+    volumes:
+      - ${POSTGRESQL_VOLUME}:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  django:
+    build:
+      context: ${REPO_DJANGO_PATH}
+      dockerfile: ${REPO_DJANGO_PATH}/Dockerfiles/django_files
+    expose:
+      - 8000
+    ports:
+      - 8000:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    links:
+      - postgres

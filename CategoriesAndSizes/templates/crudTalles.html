@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Talles{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <h2>Categoría: <em>{{category.description}}</em></h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="add/" method="POST">{% csrf_token %}
+                        <div class="mb-3">
+                            <label for="txtIdCat" class="form-label">Id de la categoría</label>
+                            <input type="text" id="txtIdCat" name="txtIdCat" class="form-control" 
+                            value="{{category.id}}"  readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtDescCat" class="form-label">Nombre de la categoría</label>
+                            <input type="text" id="txtDescCat" name="txtDescCat" class="form-control" 
+                            value="{{category.description}}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="txtNombreSize" class="form-label">Nombre del talle</label>
+                            <input type="text" id="txtNombreSize" name="txtNombreSize" class="form-control" 
+                            maxlength="50"  required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Guardar Size</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <div class="table-responsive py-2">
+                <h1>Listado de Talles</h1>
+                <a href="../export_pdf_sizes/{{category.id}}" class="btn btn-info">Generar PDF</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>id</th>
+                            <th>Nombre</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for talle in sizes %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{talle.id}}</td>
+                            <td>{{talle.name}}</td>
+                            <td>
+                                <a href="edit/{{talle.id}}/{{category.id}}" class="btn btn-info">Editar</a>
+                                <a href="del/{{talle.id}}/{{category.id}}" class="btn btn-danger btnEliminar">Eliminar</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

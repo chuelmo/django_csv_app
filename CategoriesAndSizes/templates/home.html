@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Convertir csv{% endblock %}
+{% block content %}
+
+<div class="container-fluid text-center home mb-5">
+  <div class="container p-5">
+    <h1>Aplicación para generar archivos csv con todos los Sizes por Categoría</h1>
+    <p>La idea es subir al sitio los archivos csv de ofertas pre-book con Size-category pero sin valor en Size y poder
+      bajar el archivo procesado con todos los Sizes para cada categoría, para luego poder importar correctamente la oferta.
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="alert alert-info text-center">
+    Esta aplicación web mantendrá los archivos subidos tan solo por unos minutos.
+  </div>
+</div>
+{% endblock %}

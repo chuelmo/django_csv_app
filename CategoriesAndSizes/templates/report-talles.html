@@ -1,0 +1,17 @@
+{% extends "basepdf.html" %}
+{% block content %}
+<h1 class="text-center">Sizes para la Categoría: {{ categoria }}</h1>
+<br>
+<h4 class="text-center">Es necesario que estos Sizes coincidan con los ingresados en Salesforce</h4>
+<table>
+    <tr>
+        <th>Nombre del Size</th>
+    </tr>
+    {% for key, value in sizes.items %}
+    <tr>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

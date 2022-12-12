@@ -1,0 +1,67 @@
+.home {
+    background: #532f8c;
+    color: white;
+    padding-bottom: 80px;
+    min-height: 400px;
+}
+
+.home p {
+    color: #d9ccee;
+    max-width: 75%;
+    margin: 1em auto 2em;
+    font-size: larger;
+}
+
+.home h1 {
+    font-size: 4em;
+}
+
+.site-form {
+    margin-top: 60px;
+    border: 1px solid #00dba0;
+    padding: 20px;
+}
+
+.site-form input {
+    display: block;
+    margin: 20px 0 0 0 ;
+    padding: 10px;
+}
+
+.helptext, .helptext ul {
+    margin: 0 auto 20px;
+    color: #bbb;
+    font-size: 0.8em;
+    display: block;
+}
+
+.errorlist li {
+    padding: 10px;
+    list-style-type: none;
+    border: 1px solid red;
+    color: red;
+    margin: 10px 10px;
+    font-size: 0.8em;
+}
+
+.errorlist {
+    padding: 0;
+}
+
+.site-form input[type="submit"]{
+    background: #00dba0;
+    border: 0;
+    color: #fff;
+    font-size: 1.2em;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+th, td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+h2 > em {
+    font-size: 0.6em;
+}

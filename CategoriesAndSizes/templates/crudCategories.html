@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Categorías{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+            <h2>Categorías de talles</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="add/" method="POST">{% csrf_token %}
+                        <div class="mb-3">
+                            <label for="txtDescription" class="form-label">Nombre de la categoría</label>
+                            <input type="text" id="txtDescription" name="txtDescription" class="form-control"
+                                maxlength="50" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Guardar Categoría</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+            <div class="table-responsive py-2">
+                <h1>Listado de Categorías de Talles</h1>
+                <a href="../pdf/" class="btn btn-info">Generar PDF</a>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>id</th>
+                            <th>Nombre</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in categories %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{c.id}}</td>
+                            <td>{{c.description}}</td>
+                            <td>
+                                <a href="edit/{{c.id}}" class="btn btn-info">Editar</a>
+                                <a href="del/{{c.id}}" class="btn btn-danger btnEliminar">Eliminar</a>
+                                <a href="../talles/{{c.id}}" class="btn btn-info">Ver Talles</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
